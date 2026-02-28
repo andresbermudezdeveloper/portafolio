@@ -1,8 +1,3 @@
-/* =====================================================
-   app.js — Portfolio Software Engineer
-   Escalable para 100+ certificados y 10+ proyectos
-===================================================== */
-
 'use strict';
 
 /* =====================================================
@@ -13,7 +8,14 @@ const initial_skills = [
     { group: 'Backend', tags: ['Python', 'FastAPI', 'Java', 'Spring Framework', 'PHP', 'Laravel'] },
     { group: 'Frontend', tags: ['HTML', 'CSS', 'JavaScript', 'React'] },
     { group: 'Infraestructura', tags: ['Linux', 'Redes', 'AWS', 'Docker', 'CI/CD'] },
-    { group: 'Inteligencia Artificial', tags: ['Desarrollo con agentes', 'Consumo de APIs', 'Asistentes IA'] },
+    {
+        group: 'Inteligencia Artificial', group: 'Inteligencia Artificial',
+        tags: [
+            'Arquitectura de agentes autónomos (LLM + tools)',
+            'Integración y orquestación de APIs de IA',
+            'Automatización inteligente de procesos'
+        ]
+    },
 ];
 
 const initial_experience = [
@@ -181,14 +183,14 @@ const initial_certs = [
     { id: 86, name: 'Linux y SQL', issuer: 'Google', date: '', category: 'Google', img_url: BASE_CERTS_URL + 'google_certificado_linux_sql.png', credential_url: '' },
 
     // ── IBM ───────────────────────────────────────────────────────────────────
-    { id: 87, name: 'Fundamentos de Ciberseguridad', issuer: 'IBM', date: '', category: 'Seguridad', img_url: BASE_CERTS_URL + 'ibm_insignia_fundamentos_ciberseguridad.png', credential_url: '' },
+    { id: 87, name: 'Fundamentos de Ciberseguridad', issuer: 'IBM', date: '', category: 'IBM', img_url: BASE_CERTS_URL + 'ibm_insignia_fundamentos_ciberseguridad.png', credential_url: '' },
 
-    // ── SENA ──────────────────────────────────────────────────────────────────
+    // ── SENATEC ──────────────────────────────────────────────────────────────────
     { id: 88, name: 'Insignia Digital', issuer: 'SENATEC', date: '', category: 'SENATEC', img_url: BASE_CERTS_URL + 'senatec_insignia_digital.png', credential_url: '' },
 
     // ── Universidades ─────────────────────────────────────────────────────────
-    { id: 89, name: 'Resolución de Problemas', issuer: 'Universidad de California', date: '', category: 'Universidad', img_url: BASE_CERTS_URL + 'universidad_california_certificado_resolver_problemas.png', credential_url: '' },
-    { id: 90, name: 'Java POO', issuer: 'Universidad de Palermo', date: '', category: 'Universidad', img_url: BASE_CERTS_URL + 'universidad_palermo_certificado_java_poo.png', credential_url: '' },
+    { id: 89, name: 'Resolución de Problemas', issuer: 'Universidad de California', date: '', category: 'Universidades', img_url: BASE_CERTS_URL + 'universidad_california_certificado_resolver_problemas.png', credential_url: '' },
+    { id: 90, name: 'Java POO', issuer: 'Universidad de Palermo', date: '', category: 'Universidades', img_url: BASE_CERTS_URL + 'universidad_palermo_certificado_java_poo.png', credential_url: '' },
 ];
 
 /* =====================================================
@@ -484,7 +486,7 @@ function renderCerts() {
     renderPagination(totalPages);
 
     // Actualizar stat de hero
-    document.getElementById('stat_certs').textContent = app.certs.length;
+    document.getElementById('stat_certs').textContent = `${app.certs.length}`;
 
     activateObservers();
 }
