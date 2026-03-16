@@ -5,15 +5,42 @@
 ===================================================== */
 
 const initial_skills = [
-    { group: 'Backend', tags: ['Python', 'FastAPI', 'Java', 'Spring Framework', 'PHP', 'Laravel'] },
-    { group: 'Frontend', tags: ['HTML', 'CSS', 'JavaScript', 'React'] },
-    { group: 'Infraestructura', tags: ['Linux', 'Redes', 'AWS', 'Docker', 'CI/CD'] },
     {
-        group: 'Inteligencia Artificial', group: 'Inteligencia Artificial',
+        group: 'Backend',
         tags: [
-            'Arquitectura de agentes autónomos (LLM + tools)',
-            'Integración y orquestación de APIs de IA',
-            'Automatización inteligente de procesos'
+            'Python', 'FastAPI', 'Java', 'Spring Boot', 'Spring Framework', 'Spring Security', 'Spring Data JPA',
+            'Spring AI', 'PHP', 'Laravel', 'REST APIs', 'JWT', 'Encriptación', 'Autenticación OAuth2', 'ORMs',
+            'SQL Alchemy', 'JPA/Hibernate'
+        ]
+    },
+    {
+        group: 'Bases de Datos',
+        tags: ['SQL Server', 'MySQL', 'PostgreSQL', 'Elasticsearch', 'DuckDB']
+    },
+    {
+        group: 'Frontend',
+        tags: ['HTML', 'CSS', 'JavaScript', 'React', 'Responsive Design']
+    },
+    {
+        group: 'Infraestructura',
+        tags: [
+            'Linux', 'Docker', 'AWS', 'CI/CD', 'Git', 'GitHub', 'Redes', 'Administración de Servidores',
+            'Administración de BD'
+        ]
+    },
+    {
+        group: 'Inteligencia Artificial',
+        tags: [
+            'Agentes IA', 'Arquitectura de Agentes LLM', 'ChatBots', 'Orquestación de APIs IA',
+            'Automatización Inteligente', 'RAG', 'OpenAI API', 'Anthropic API', 'Spring AI', 'MCP', 'Skills IA',
+            'Fine-tuning', 'Prompts', 'Ingeniería de Prompts'
+        ]
+    },
+    {
+        group: 'Seguridad',
+        tags: [
+            'JWT', 'OAuth2', 'Encriptación AES', 'Hashing bcrypt', 'HTTPS / TLS', 'Spring Security',
+            'Autenticación y Autorización'
         ]
     },
 ];
@@ -291,19 +318,33 @@ function normalizeText(text) {
 }
 
 /* =====================================================
-   RENDER — HABILIDADES
+   RENDER — HABILIDADES (ticker infinito por fila)
 ===================================================== */
 function renderSkills() {
     const container = document.getElementById('skills_container');
-    container.innerHTML = app.skills.map(g => `
-    <div>
-      <div class="grupo_titulo">${g.group}</div>
-      <div class="tags_container">
-        ${g.tags.map(t => `<span class="tag">${t}</span>`).join('')}
-      </div>
-    </div>
-  `).join('');
+
+    // Triplica los items para garantizar loop sin huecos
+    function buildRow(group, reverse = false) {
+        const items = group.tags
+            .map(t => `<span class="ticker_item"><span class="ticker_dot"></span>${t}</span>`)
+            .join('');
+        const dirClass = reverse ? 'ticker_track--reverse' : '';
+        return `
+      <div class="ticker_row">
+        <span class="ticker_label">${group.group}</span>
+        <div class="ticker_mask">
+          <div class="ticker_track ${dirClass}" aria-label="${group.group}">
+            ${items}${items}${items}
+          </div>
+        </div>
+      </div>`;
+    }
+
+    container.innerHTML = app.skills
+        .map((g, i) => buildRow(g, i % 2 !== 0))
+        .join('');
 }
+
 
 /* =====================================================
    RENDER — LÍNEA DE TIEMPO

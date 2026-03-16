@@ -532,42 +532,122 @@ section {
     font-size: 0.95rem;
 }
 
-.skills_grid {
-    display: grid;
+/* =====================================================
+   TICKER — Stack Tecnológico
+===================================================== */
+
+/* Espaciado de la sección completa del ticker */
+.ticker_section {
+    margin-top: 3rem;
+}
+
+/* Contenedor de todas las filas */
+.ticker_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+/* Una fila: label + cinta */
+.ticker_row {
+    display: flex;
+    align-items: center;
     gap: 1.25rem;
 }
 
-.group_title {
+/* Etiqueta de categoría */
+.ticker_label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.66rem;
+    font-size: 0.58rem;
     color: var(--accent);
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: 0.6rem;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+    min-width: 7rem;
+    flex-shrink: 0;
 }
 
-.tags_container {
+/* Máscara con fade en los bordes */
+.ticker_mask {
+    flex: 1;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+
+/* Cinta animada izquierda → derecha */
+.ticker_track {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.45rem;
+    width: max-content;
+    animation: ticker_ltr 30s linear infinite;
 }
 
-.tag {
+/* Dirección inversa para filas alternas */
+.ticker_track--reverse {
+    animation: ticker_rtl 36s linear infinite;
+}
+
+/* Pausa al hover */
+.ticker_row:hover .ticker_track {
+    animation-play-state: paused;
+}
+
+/* Item individual */
+.ticker_item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.68rem;
+    font-size: 0.69rem;
     color: var(--tag_text);
     background: var(--tag_bg);
-    border: 1px solid rgba(59, 130, 246, 0.2);
-    padding: 0.28rem 0.7rem;
+    border: 1px solid rgba(59, 130, 246, 0.18);
+    padding: 0.28rem 0.75rem;
     border-radius: 4px;
-    letter-spacing: 0.04em;
-    transition: all 0.2s;
+    margin-right: 0.5rem;
+    white-space: nowrap;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
     cursor: default;
+    user-select: none;
 }
 
-.tag:hover {
+.ticker_item:hover {
     background: var(--glow2);
     border-color: var(--accent2);
+    color: #bfdbfe;
+}
+
+/* Punto decorativo */
+.ticker_dot {
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    opacity: 0.65;
+}
+
+@keyframes ticker_ltr {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-33.333%);
+    }
+}
+
+@keyframes ticker_rtl {
+    0% {
+        transform: translateX(-33.333%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 
 /* =====================================================
