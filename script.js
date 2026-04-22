@@ -77,7 +77,10 @@ const initial_projects = [
         id: 1,
         name: 'Edoolectores',
         type: 'video',
-        media_url: 'https://www.youtube.com/watch?v=xfuuXPltCyM&list=PLHKlRnBxgyRYay3ue9L1mHyA3EpVW-UDp&index=2',
+        videos: [
+            { url: 'https://www.youtube.com/watch?v=xfuuXPltCyM&list=PLHKlRnBxgyRYay3ue9L1mHyA3EpVW-UDp&index=2&t=1s', label: 'Introducción al proyecto' },
+            { url: 'https://www.youtube.com/watch?v=XsIFmXCL-Bo&list=PLHKlRnBxgyRYay3ue9L1mHyA3EpVW-UDp&index=1', label: 'Asesoria con el agente IA' }
+        ],
         desc: `Edoolectores es una aplicación web de una librería cristiana con un catálogo amplio de títulos y recursos. El núcleo del proyecto es un agente de IA que actúa como un asesor personalizado.
 
 Este agente permite buscar, filtrar y comparar productos, además de ofrecer recomendaciones contextualizadas según las necesidades del usuario. Su objetivo no es solo facilitar la navegación del catálogo, sino acompañar el proceso de decisión, orientando al usuario hacia el recurso más adecuado.
@@ -87,14 +90,11 @@ La plataforma adopta un enfoque híbrido. Integra un panel dinámico dentro de l
 Este enfoque dual permite adaptarse al comportamiento del usuario, combinando una interacción guiada con la libertad de navegación típica de una tienda en línea.`,
         tags: ['Python', 'FastAPI', 'Docker', 'Linux', 'Nuxt', 'Vue.js', 'TypeScript', 'IA'],
         status: 'Privado',
-        github: '',
-        live: '',
     },
     {
         id: 2,
         name: 'CLC Colombia - App Distribuidora',
         type: 'video',
-        media_url: 'https://www.youtube.com/watch?v=bSfwb58u4D8&list=PLHKlRnBxgyRYXB5tjtjGUYQgOISL79aZn&index=1&t=1s',
         desc: `Aplicación web de e-commerce desarrollada para CLC Colombia, enfocada en una de las áreas clave de la organización, la distribuidora: la comercialización de su catálogo de productos. La plataforma permite exponer de forma estructurada y accesible todo el portafolio, integrando información crítica como disponibilidad de stock en tiempo real, directamente sincronizada con el ERP institucional.
 
 El núcleo del sistema se basa en una integración sólida con el ERP, lo que garantiza consistencia en inventarios, precios y gestión de pedidos. Los usuarios pueden realizar búsquedas avanzadas, aplicar filtros y explorar el catálogo con información actualizada, mientras que los pedidos generados son enviados automáticamente al sistema central para su procesamiento.
@@ -102,30 +102,25 @@ El núcleo del sistema se basa en una integración sólida con el ERP, lo que ga
 Además, la aplicación incorpora procesos de sincronización y administración automatizada, reduciendo la intervención manual y asegurando la integridad de los datos. El resultado es una plataforma robusta, alineada con la operación interna de la organización y optimizada para ofrecer una experiencia de compra confiable y eficiente.`,
         tags: ['Python', 'FastAPI', 'Docker', 'Linux', 'HTML', 'CSS', 'JavaScript', 'IA'],
         status: 'Privado',
-        github: '',
-        live: '',
+        videos: [{ url: 'https://www.youtube.com/watch?v=bSfwb58u4D8&list=PLHKlRnBxgyRYXB5tjtjGUYQgOISL79aZn&index=1&t=1s', label: 'Introducción al proyecto'  }],
     },
     {
         id: 3,
         name: 'SysProData',
         type: 'video',
-        media_url: 'https://www.youtube.com/watch?v=9-bc9JcSgyQ&t=30s',
+        videos: [{ url: 'https://www.youtube.com/watch?v=9-bc9JcSgyQ&t=30s', label: 'Introducción al proyecto'  }],
         desc: 'Aplicación web y de escritorio para analizar archivos de datos masivos que los equipos convencionales no pueden procesar. Permite convertir a SQL, explorar en memoria directamente desde el navegador o ejecutar análisis desde una app de escritorio, sin límites de tamaño ni conocimiento especializado, gracias a un asistente IA.',
         tags: ['Python', 'FastAPI', 'Docker', 'Linux', 'HTML', 'CSS', 'JavaScript', 'IA'],
         status: 'Privado',
-        github: '',
-        live: '',
     },
     {
         id: 4,
         name: 'Asistente IA para administración de bases de datos',
         type: 'video',
-        media_url: 'https://www.youtube.com/watch?v=TdjrCQRdszk&t=7s',
+        videos: [{ url: 'https://www.youtube.com/watch?v=TdjrCQRdszk&t=7s', label: 'Introducción al proyecto'  }],
         desc: 'Aplicación web para administrar bases de datos por medio de lenguaje natural usando IA. Permite operar sobre bases de datos sin necesidad de conocimiento técnico.',
         tags: ['Java', 'Spring Boot', 'Linux', 'HTML', 'CSS', 'JavaScript', 'IA'],
         status: 'Privado',
-        github: '',
-        live: '',
     },
 ];
 
@@ -435,6 +430,33 @@ function updateTickerButtons() {
     if (nextBtn) nextBtn.disabled = tickerState.current === tickerState.total - 1;
 }
 
+/** Cambia el video del proyecto actual en el ticker */
+function changeProjectVideo(projectId, videoIndex) {
+    const p = app.projects.find(x => x.id === projectId);
+    if (!p || !p.videos || !p.videos[videoIndex]) return;
+
+    const videoUrl = p.videos[videoIndex].url;
+    const embedUrl = getYoutubeEmbed(videoUrl);
+
+    // Actualizar el índice del video activo
+    p.activeVideoIndex = videoIndex;
+
+    // Re-renderizar los botones
+    renderProjects();
+
+    // Reproducir el video en el div principal de ESTE proyecto
+    setTimeout(() => {
+        const card = document.getElementById(`project_card_${projectId}`);
+        const overlay = card?.querySelector('.project_media .yt_overlay');
+        if (overlay && embedUrl) {
+            playVideo(overlay, embedUrl);
+        }
+    }, 50);
+
+    // Scroll al video
+    document.querySelector('.project_media')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
 function buildProjectCard(p, index) {
     const media_html = buildProjectMedia(p);
     const badgeClass = p.type === 'video' ? 'badge_video' : 'badge_imagen';
@@ -442,19 +464,16 @@ function buildProjectCard(p, index) {
         ? `${svgYoutubeMini()} Video`
         : `${svgImageMini()} Imagen`;
 
-    const githubLink = p.github
-        ? `<a class="project_link" href="${p.github}" target="_blank" rel="noopener" aria-label="Ver en GitHub">
-        ${svgGithub(14)} Repositorio
-       </a>`
-        : '';
-    const liveLink = p.live
-        ? `<a class="project_link" href="${p.live}" target="_blank" rel="noopener" aria-label="Ver proyecto en vivo">
-        ${svgExternalLink(13)} Ver en vivo
-       </a>`
-        : '';
+    // Videos: lista de links
+    const videos = p.videos || [];
+    const activeIndex = p.activeVideoIndex || 0;
+    const linksHtml = videos.map((video, i) => {
+        const label = video.label || `Video ${i + 1}`;
+        const isActive = i === activeIndex ? 'active' : '';
+        return `<button class="project_link ${isActive}" onclick="changeProjectVideo(${p.id}, ${i})" aria-label="${label}">${svgYoutubeMini()} ${label}</button>`;
+    }).join('');
 
-    const tagsHtml = p.tags.map(t => `<span class="tag">${t}</span>`).join('');
-    const linksHtml = [githubLink, liveLink].filter(Boolean).join('');
+    const tagsHtml = (p.tags || []).map(t => `<span class="tag">${t}</span>`).join('');
     const needsExpand = p.desc && p.desc.length > 200;
     const expandBtn = needsExpand
         ? `<button class="project_expand_btn" onclick="openProjectDescModal(${p.id}, '${p.name.replace(/'/g, "\\'")}')" aria-label="Leer descripción completa">
@@ -467,7 +486,7 @@ function buildProjectCard(p, index) {
         : '';
 
     return `
-    <div class="project_card">
+    <div class="project_card" id="project_card_${p.id}">
       <div class="project_card_inner">
         ${media_html}
       </div>
@@ -495,9 +514,14 @@ function openProjectDescModal(projectId, projectName) {
 
 
 function buildProjectMedia(p) {
-    if (p.type === 'video' && p.media_url) {
-        const embedUrl = getYoutubeEmbed(p.media_url);
-        const thumbnail = getYoutubeThumbnail(p.media_url);
+    const videos = p.videos || [];
+    const activeIndex = p.activeVideoIndex || 0;
+    const videoObj = videos[activeIndex];
+    const mediaUrl = videoObj?.url;
+
+    if (p.type === 'video' && mediaUrl) {
+        const embedUrl = getYoutubeEmbed(mediaUrl);
+        const thumbnail = getYoutubeThumbnail(mediaUrl);
         const imgAttr = thumbnail ? `src="${thumbnail}"` : '';
         if (!embedUrl) return emptyMediaHtml();
 
@@ -509,10 +533,10 @@ function buildProjectMedia(p) {
         </div>
       </div>`;
     }
-    if (p.type === 'image' && p.media_url) {
+    if (p.type === 'image' && mediaUrl) {
         return `
       <div class="project_media">
-        <img src="${p.media_url}" alt="${p.name}" loading="lazy">
+        <img src="${mediaUrl}" alt="${p.name}" loading="lazy">
       </div>`;
     }
     return emptyMediaHtml();

@@ -1104,8 +1104,11 @@ section {
 
 .project_links {
     display: flex;
-    gap: 1rem;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    max-height: 120px;
+    overflow-y: auto;
 }
 
 .project_link {
@@ -1117,16 +1120,24 @@ section {
     display: flex;
     align-items: center;
     gap: 0.35rem;
-    transition: color 0.2s;
+    transition: color 0.2s, background 0.2s;
     padding: 0.4rem 0.75rem;
     border: 1px solid var(--border2);
     border-radius: var(--radius);
+    background: transparent;
+    cursor: pointer;
 }
 
 .project_link:hover {
     color: var(--accent);
     border-color: var(--accent);
     background: var(--glow);
+}
+
+.project_link.active {
+    color: var(--bg);
+    background: var(--accent);
+    border-color: var(--accent);
 }
 
 .project_link svg {
