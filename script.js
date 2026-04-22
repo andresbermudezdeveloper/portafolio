@@ -10,7 +10,7 @@ const initial_skills = [
         tags: [
             'Python', 'FastAPI', 'Java', 'Spring Boot', 'Spring Framework', 'Spring Security', 'Spring Data JPA',
             'Spring AI', 'PHP', 'Laravel', 'REST APIs', 'JWT', 'Encriptación', 'Autenticación OAuth2', 'ORMs',
-            'SQL Alchemy', 'JPA/Hibernate'
+            'SQLAlchemy', 'JPA/Hibernate'
         ]
     },
     {
@@ -32,14 +32,14 @@ const initial_skills = [
         group: 'Inteligencia Artificial',
         tags: [
             'Agentes IA', 'Arquitectura de Agentes LLM', 'ChatBots', 'Orquestación de APIs IA',
-            'Automatización Inteligente', 'RAG', 'OpenAI API', 'Anthropic API', 'Spring AI', 'MCP', 'Skills IA',
+            'Automatización Inteligente', 'RAG', 'OpenAI', 'Anthropic', 'Spring AI', 'MCP', 'Skills IA',
             'Fine-tuning', 'Prompts', 'Ingeniería de Prompts'
         ]
     },
     {
         group: 'Seguridad',
         tags: [
-            'JWT', 'OAuth2', 'Encriptación AES', 'Hashing bcrypt', 'HTTPS / TLS', 'Spring Security',
+            'JWT', 'OAuth2', 'Encriptación AES', 'Hashing bcrypt', 'HTTPS/TLS', 'Spring Security',
             'Autenticación y Autorización'
         ]
     },
@@ -75,36 +75,57 @@ const initial_experience = [
 const initial_projects = [
     {
         id: 1,
-        name: 'SysProData',
+        name: 'Edoolectores',
         type: 'video',
-        media_url: 'https://www.youtube.com/watch?v=9-bc9JcSgyQ&t=30s',
-        desc: 'Aplicación web y de escritorio para analizar archivos de datos masivos que los equipos convencionales no pueden procesar. Permite convertir a SQL, explorar en memoria directamente desde el navegador o ejecutar análisis desde una app de escritorio, sin límites de tamaño ni conocimiento especializado, gracias a un asistente IA.',
-        tags: ['Python', 'FastAPI', 'Docker', 'Linux', 'HTML', 'CSS', 'JavaScript', 'Inteligencia Artificial'],
+        media_url: 'https://www.youtube.com/watch?v=xfuuXPltCyM&list=PLHKlRnBxgyRYay3ue9L1mHyA3EpVW-UDp&index=2',
+        desc: `Edoolectores es una aplicación web de una librería cristiana con un catálogo amplio de títulos y recursos. El núcleo del proyecto es un agente de IA que actúa como un asesor personalizado.
+
+Este agente permite buscar, filtrar y comparar productos, además de ofrecer recomendaciones contextualizadas según las necesidades del usuario. Su objetivo no es solo facilitar la navegación del catálogo, sino acompañar el proceso de decisión, orientando al usuario hacia el recurso más adecuado.
+
+La plataforma adopta un enfoque híbrido. Integra un panel dinámico dentro de la experiencia conversacional del agente, desde el cual el usuario puede navegar por el catálogo, visualizar productos y gestionar acciones como agregar al carrito, sin salir de la conversación. En paralelo, también ofrece la experiencia tradicional de un e-commerce, permitiendo explorar, buscar y comprar de forma convencional.
+
+Este enfoque dual permite adaptarse al comportamiento del usuario, combinando una interacción guiada con la libertad de navegación típica de una tienda en línea.`,
+        tags: ['Python', 'FastAPI', 'Docker', 'Linux', 'Nuxt', 'Vue.js', 'TypeScript', 'IA'],
         status: 'Privado',
         github: '',
         live: '',
     },
     {
-        id: 1,
-        name: 'Asitente IA para administración de bases de datos',
+        id: 2,
+        name: 'CLC Colombia - App Distribuidora',
         type: 'video',
-        media_url: 'https://www.youtube.com/watch?v=TdjrCQRdszk&t=7s',
-        desc: 'Aplicación web para administrar bases de datos por medio de lenguaje natural usando inteligencia artificial. Permite operar sobre bases de datos sin necesidad de conocimiento técnico.',
-        tags: ['Java', 'Spring Boot', 'Linux', 'HTML', 'CSS', 'JavaScript', 'Inteligencia Artificial'],
+        media_url: 'https://www.youtube.com/watch?v=bSfwb58u4D8&list=PLHKlRnBxgyRYXB5tjtjGUYQgOISL79aZn&index=1&t=1s',
+        desc: `Aplicación web de e-commerce desarrollada para CLC Colombia, enfocada en una de las áreas clave de la organización, la distribuidora: la comercialización de su catálogo de productos. La plataforma permite exponer de forma estructurada y accesible todo el portafolio, integrando información crítica como disponibilidad de stock en tiempo real, directamente sincronizada con el ERP institucional.
+
+El núcleo del sistema se basa en una integración sólida con el ERP, lo que garantiza consistencia en inventarios, precios y gestión de pedidos. Los usuarios pueden realizar búsquedas avanzadas, aplicar filtros y explorar el catálogo con información actualizada, mientras que los pedidos generados son enviados automáticamente al sistema central para su procesamiento.
+
+Además, la aplicación incorpora procesos de sincronización y administración automatizada, reduciendo la intervención manual y asegurando la integridad de los datos. El resultado es una plataforma robusta, alineada con la operación interna de la organización y optimizada para ofrecer una experiencia de compra confiable y eficiente.`,
+        tags: ['Python', 'FastAPI', 'Docker', 'Linux', 'HTML', 'CSS', 'JavaScript', 'IA'],
         status: 'Privado',
         github: '',
         live: '',
     },
     {
         id: 3,
-        name: 'Test',
-        type: 'image',
-        media_url: 'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=80',
-        desc: 'Test.',
-        tags: ['React', 'Python', 'AWS', 'Terraform'],
-        status: 'En vivo',
+        name: 'SysProData',
+        type: 'video',
+        media_url: 'https://www.youtube.com/watch?v=9-bc9JcSgyQ&t=30s',
+        desc: 'Aplicación web y de escritorio para analizar archivos de datos masivos que los equipos convencionales no pueden procesar. Permite convertir a SQL, explorar en memoria directamente desde el navegador o ejecutar análisis desde una app de escritorio, sin límites de tamaño ni conocimiento especializado, gracias a un asistente IA.',
+        tags: ['Python', 'FastAPI', 'Docker', 'Linux', 'HTML', 'CSS', 'JavaScript', 'IA'],
+        status: 'Privado',
         github: '',
-        live: 'https://example.com',
+        live: '',
+    },
+    {
+        id: 4,
+        name: 'Asistente IA para administración de bases de datos',
+        type: 'video',
+        media_url: 'https://www.youtube.com/watch?v=TdjrCQRdszk&t=7s',
+        desc: 'Aplicación web para administrar bases de datos por medio de lenguaje natural usando IA. Permite operar sobre bases de datos sin necesidad de conocimiento técnico.',
+        tags: ['Java', 'Spring Boot', 'Linux', 'HTML', 'CSS', 'JavaScript', 'IA'],
+        status: 'Privado',
+        github: '',
+        live: '',
     },
 ];
 
@@ -160,10 +181,10 @@ const initial_certs = [
     { id: 46, name: 'Testing en Java', issuer: 'Platzi', date: '', category: 'Platzi', img_url: BASE_CERTS_URL + 'platzi_certificado_testing_java.png', credential_url: '' },
 
     // ── Oracle Next Education (ONE) ───────────────────────────────────────────
-    { id: 47, name: 'ONE — Candidato', issuer: 'Oracle / Alura', date: '', category: 'ONE', img_url: BASE_CERTS_URL + 'one_certificado_candidato.png', credential_url: '' },
-    { id: 48, name: 'ONE — Estudiante Backend', issuer: 'Oracle / Alura', date: '', category: 'ONE', img_url: BASE_CERTS_URL + 'one_certificado_estudiante_backend.png', credential_url: '' },
-    { id: 49, name: 'ONE — Finalización del Programa', issuer: 'Oracle / Alura', date: '', category: 'ONE', img_url: BASE_CERTS_URL + 'one_certificado_finalizacion_programa.png', credential_url: '' },
-    { id: 50, name: 'ONE — Graduado', issuer: 'Oracle / Alura', date: '', category: 'ONE', img_url: BASE_CERTS_URL + 'one_certificado_graduado.png', credential_url: '' },
+    { id: 47, name: 'ONE — Candidato', issuer: 'Oracle ONE', date: '', category: 'ONE', img_url: BASE_CERTS_URL + 'one_certificado_candidato.png', credential_url: '' },
+    { id: 48, name: 'ONE — Estudiante Backend', issuer: 'Oracle ONE', date: '', category: 'ONE', img_url: BASE_CERTS_URL + 'one_certificado_estudiante_backend.png', credential_url: '' },
+    { id: 49, name: 'ONE — Finalización del Programa', issuer: 'Oracle ONE', date: '', category: 'ONE', img_url: BASE_CERTS_URL + 'one_certificado_finalizacion_programa.png', credential_url: '' },
+    { id: 50, name: 'ONE — Graduado', issuer: 'Oracle ONE', date: '', category: 'ONE', img_url: BASE_CERTS_URL + 'one_certificado_graduado.png', credential_url: '' },
 
     // ── Alura — Certificados ──────────────────────────────────────────────────
     { id: 51, name: 'Principiante en Programación', issuer: 'Alura', date: '', category: 'Alura', img_url: BASE_CERTS_URL + 'alura_certificado_principiante_programacion.png', credential_url: '' },
@@ -363,49 +384,115 @@ function renderTimeline() {
 }
 
 /* =====================================================
-   RENDER — PROYECTOS
+    RENDER — PROYECTOS (TICKER)
 ===================================================== */
+
+/** Estado del ticker de proyectos */
+const tickerState = {
+    current: 0,
+    total: 0,
+};
+
 function renderProjects() {
-    const grid = document.getElementById('projects_grid');
-    const cardsHtml = app.projects.map(p => buildProjectCard(p)).join('');
-    grid.innerHTML = cardsHtml;
+    tickerState.total = app.projects.length;
+    const viewport = document.getElementById('ticker_viewport');
+    viewport.innerHTML = app.projects.map((p, i) => buildProjectCard(p, i)).join('');
+
+    const totalEl = document.getElementById('ticker_total');
+    const currentEl = document.getElementById('ticker_current');
+    if (totalEl) totalEl.textContent = tickerState.total;
+    if (currentEl) currentEl.textContent = tickerState.current + 1;
+
+    updateTickerButtons();
     activateObservers();
 }
 
-function buildProjectCard(p) {
+/** Navegación del ticker */
+function tickerNav(direction) {
+    const newIndex = tickerState.current + direction;
+    if (newIndex < 0 || newIndex >= tickerState.total) return;
+
+    tickerState.current = newIndex;
+    updateTickerView();
+}
+
+function updateTickerView() {
+    const viewport = document.getElementById('ticker_viewport');
+    if (!viewport) return;
+
+    viewport.style.transform = `translateX(-${tickerState.current * 100}%)`;
+
+    const currentEl = document.getElementById('ticker_current');
+    if (currentEl) currentEl.textContent = tickerState.current + 1;
+
+    updateTickerButtons();
+}
+
+function updateTickerButtons() {
+    const prevBtn = document.getElementById('ticker_prev');
+    const nextBtn = document.getElementById('ticker_next');
+    if (prevBtn) prevBtn.disabled = tickerState.current === 0;
+    if (nextBtn) nextBtn.disabled = tickerState.current === tickerState.total - 1;
+}
+
+function buildProjectCard(p, index) {
     const media_html = buildProjectMedia(p);
     const badgeClass = p.type === 'video' ? 'badge_video' : 'badge_imagen';
     const badgeText = p.type === 'video'
-        ? `${svgYoutubeMini()} YouTube`
+        ? `${svgYoutubeMini()} Video`
         : `${svgImageMini()} Imagen`;
 
     const githubLink = p.github
         ? `<a class="project_link" href="${p.github}" target="_blank" rel="noopener" aria-label="Ver en GitHub">
-        ${svgGithub(14)} GitHub
+        ${svgGithub(14)} Repositorio
        </a>`
         : '';
     const liveLink = p.live
-        ? `<a class="project_link" href="${p.live}" target="_blank" rel="noopener" aria-label="Ver en vivo">
-        ${svgExternalLink(13)} En vivo
+        ? `<a class="project_link" href="${p.live}" target="_blank" rel="noopener" aria-label="Ver proyecto en vivo">
+        ${svgExternalLink(13)} Ver en vivo
        </a>`
         : '';
 
+    const tagsHtml = p.tags.map(t => `<span class="tag">${t}</span>`).join('');
+    const linksHtml = [githubLink, liveLink].filter(Boolean).join('');
+    const needsExpand = p.desc && p.desc.length > 200;
+    const expandBtn = needsExpand
+        ? `<button class="project_expand_btn" onclick="openProjectDescModal(${p.id}, '${p.name.replace(/'/g, "\\'")}')" aria-label="Leer descripción completa">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            Leer más
+           </button>`
+        : '';
+
     return `
-    <div class="project_card reveal">
-      ${media_html}
-      <div class="project_body">
-        <div class="project_badge_row">
-          <span class="badge_type ${badgeClass}">${badgeText}</span>
-        </div>
+    <div class="project_card">
+      <div class="project_card_inner">
+        ${media_html}
+      </div>
+      <div class="project_info">
+        <div class="project_index">${String(index + 1).padStart(2, '0')}</div>
+        <span class="project_type_badge ${badgeClass}">${badgeText}</span>
         <h3 class="project_name">${p.name}</h3>
         <p class="project_desc">${p.desc}</p>
-        <div class="project_tags">
-          ${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}
-        </div>
-        <div class="project_links">${githubLink}${liveLink}</div>
+        ${expandBtn}
+        ${tagsHtml ? `<div class="project_tags">${tagsHtml}</div>` : ''}
+        ${linksHtml ? `<div class="project_links">${linksHtml}</div>` : ''}
       </div>
     </div>`;
 }
+
+function openProjectDescModal(projectId, projectName) {
+    const p = app.projects.find(x => x.id === projectId);
+    if (!p) return;
+
+    document.getElementById('project_desc_modal_name').textContent = projectName;
+    document.getElementById('project_desc_modal_body').innerHTML = p.desc.replace(/\n/g, '<br>');
+    openModal('modal_project_desc');
+}
+
+
 
 function buildProjectMedia(p) {
     if (p.type === 'video' && p.media_url) {
@@ -552,9 +639,7 @@ function buildCertCard(c) {
     >
       <div class="cert_image_wrap">
         ${imgHtml}
-        <div class="cert_overlay" aria-hidden="true">
-          <span class="cert_overlay_text">${svgEye(11)} Ampliar</span>
-        </div>
+        <div class="cert_overlay"></div>
       </div>
       <div class="cert_body">
         <div class="cert_header">
@@ -563,7 +648,6 @@ function buildCertCard(c) {
         <div class="cert_name">${c.name}</div>
         <div class="cert_footer">
           <span class="cert_date">${c.date}</span>
-          ${c.category ? `<span class="cert_category">${c.category}</span>` : ''}
         </div>
       </div>
     </div>`;
@@ -906,6 +990,8 @@ document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
         document.querySelectorAll('.modal_backdrop.open').forEach(m => closeModal(m.id));
     }
+    if (e.key === 'ArrowLeft') tickerNav(-1);
+    if (e.key === 'ArrowRight') tickerNav(1);
 });
 
 /* =====================================================
