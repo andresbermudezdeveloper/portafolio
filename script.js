@@ -79,7 +79,8 @@ const initial_projects = [
         type: 'video',
         videos: [
             { url: 'https://www.youtube.com/watch?v=xfuuXPltCyM&list=PLHKlRnBxgyRYay3ue9L1mHyA3EpVW-UDp&index=2&t=1s', label: 'Introducción al proyecto' },
-            { url: 'https://www.youtube.com/watch?v=XsIFmXCL-Bo&list=PLHKlRnBxgyRYay3ue9L1mHyA3EpVW-UDp&index=1', label: 'Asesoria con el agente IA' }
+            { url: 'https://www.youtube.com/watch?v=XsIFmXCL-Bo&list=PLHKlRnBxgyRYay3ue9L1mHyA3EpVW-UDp&index=1', label: 'Asesoria con el agente IA' },
+            { url: 'https://www.youtube.com/watch?v=cNpxjvgF9Cw', label: 'Compra via pasarela de pago - Wompi' }
         ],
         desc: `Edoolectores es una aplicación web de una librería cristiana con un catálogo amplio de títulos y recursos. El núcleo del proyecto es un agente de IA que actúa como un asesor personalizado.
 
