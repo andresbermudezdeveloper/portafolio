@@ -639,7 +639,7 @@ function renderCerts() {
     renderPagination(totalPages);
 
     // Actualizar stat de hero
-    document.getElementById('stat_certs').textContent = `${app.certs.length}`;
+    document.getElementById('stat_certs').textContent = `+${app.certs.length}`;
 
     activateObservers();
 }
@@ -687,7 +687,7 @@ function renderPagination(totalPages) {
     let buttons = '';
 
     // Anterior
-    buttons += `<button class="page_btn" onclick="goToPage(${page - 1})" ${page === 1 ? 'disabled' : ''} aria-label="Página anterior">← Ant</button>`;
+    buttons += `<button class="page_btn page_btn_arrow" onclick="goToPage(${page - 1})" ${page === 1 ? 'disabled' : ''} aria-label="Página anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>`;
 
     // Páginas visibles: window deslizante de 5
     const window = 2; // páginas a cada lado de la actual
@@ -709,12 +709,9 @@ function renderPagination(totalPages) {
     }
 
     // Siguiente
-    buttons += `<button class="page_btn" onclick="goToPage(${page + 1})" ${page === totalPages ? 'disabled' : ''} aria-label="Página siguiente">Sig →</button>`;
+    buttons += `<button class="page_btn page_btn_arrow" onclick="goToPage(${page + 1})" ${page === totalPages ? 'disabled' : ''} aria-label="Página siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>`;
 
-    // Info central
-    buttons += `<span class="page_info">Pág ${page} / ${totalPages}</span>`;
-
-    container.innerHTML = buttons;
+    container.innerHTML = `<div class="pagination_row">${buttons}</div><span class="page_info">Pág ${page} / ${totalPages}</span>`;
 }
 
 /** Cambia a una página específica y hace scroll a la sección */
@@ -950,27 +947,6 @@ function deleteCert(id) {
     renderCerts();
 }
 
-/* =====================================================
-   FORMULARIO DE CONTACTO
-===================================================== */
-document.getElementById('contact_form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const btn = document.getElementById('btn_send');
-    const originalText = btn.textContent;
-
-    btn.textContent = '✓ ¡Mensaje enviado!';
-    btn.style.background = '#22c55e';
-    btn.style.borderColor = '#22c55e';
-    btn.disabled = true;
-    this.reset();
-
-    setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.background = '';
-        btn.style.borderColor = '';
-        btn.disabled = false;
-    }, 3500);
-});
 
 /* =====================================================
    TEMA OSCURO / CLARO
@@ -982,7 +958,7 @@ btn_theme.addEventListener('click', () => {
     const html = document.documentElement;
     const isDark = html.dataset.theme === 'dark';
     html.dataset.theme = isDark ? 'light' : 'dark';
-    themeLabel.textContent = isDark ? 'light' : 'dark';
+    themeLabel.textContent = isDark ? 'Tema claro' : 'Tema oscuro';
 });
 
 /* =====================================================
@@ -1007,6 +983,31 @@ function activateObservers() {
     }
     elementos.forEach(el => revealObserver.observe(el));
 }
+
+/* =====================================================
+   NAV ACTIVO — resalta la sección visible
+===================================================== */
+(function () {
+    const nav_links = document.querySelectorAll('.nav_links a[href^="#"]');
+    const sections = Array.from(nav_links)
+        .map(a => document.querySelector(a.getAttribute('href')))
+        .filter(Boolean);
+
+    const nav_observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const id = entry.target.id;
+                nav_links.forEach(a => {
+                    a.classList.toggle('active', a.getAttribute('href') === `#${id}`);
+                });
+            });
+        },
+        { rootMargin: '-50% 0px -45% 0px', threshold: 0 }
+    );
+
+    sections.forEach(s => nav_observer.observe(s));
+})();
 
 /* =====================================================
    TECLADO — ESC para cerrar modales
